@@ -1,0 +1,76 @@
+﻿<Window x:Class="lab3.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:lab3"
+        mc:Ignorable="d"
+        Title="Список контактов" Height="450" Width="800">
+    <Window.Resources>
+        <Style TargetType="TextBlock">
+            <Setter Property="FontSize" Value="14"/>
+        </Style>
+        <Style TargetType="TextBox">
+            <Setter Property="FontSize" Value="14"/>
+        </Style>
+        <Style TargetType="Button">
+            <Setter Property="Width" Value="40"/>
+            <Setter Property="Margin" Value="5"/>
+        </Style>
+    </Window.Resources>
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="0.8"/>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="0.2"/>
+        </Grid.RowDefinitions>
+        <ListBox Grid.Column="0" ItemsSource="{Binding Contacts}"
+                 SelectedItem="{Binding SelectedContact}">
+            <ListBox.ItemTemplate>
+                <DataTemplate>
+                    <StackPanel Margin="5">
+                        <TextBlock FontSize="18" Text="{Binding Path=Name}"/>
+                        <TextBlock Text="{Binding Path=Surname}"/>
+                        <TextBlock Text="{Binding Path=Phone}"/>
+                    </StackPanel>
+                </DataTemplate>
+            </ListBox.ItemTemplate>
+
+        </ListBox>
+        <StackPanel Grid.Row="1" Orientation="Horizontal">
+            <Button Command="{Binding AddCommand}" Margin="10,-64,10,21" RenderTransformOrigin="0.5,0.5">
+                <Button.RenderTransform>
+                    <TransformGroup>
+                        <ScaleTransform ScaleY="-1"/>
+                        <SkewTransform/>
+                        <RotateTransform/>
+                        <TranslateTransform/>
+                    </TransformGroup>
+                </Button.RenderTransform> +
+            </Button>
+            <Button Command="{Binding RemoveCommand}"
+                    CommandParameter="{Binding SelectedContact}" Margin="10,-64,10,21" RenderTransformOrigin="0.5,0.5" Content="-">
+                <Button.RenderTransform>
+                    <TransformGroup>
+                        <ScaleTransform ScaleY="-1"/>
+                        <SkewTransform/>
+                        <RotateTransform/>
+                        <TranslateTransform/>
+                    </TransformGroup>
+                </Button.RenderTransform>
+            </Button>
+        </StackPanel>
+        <StackPanel Grid.Column="1" DataContext="{Binding SelectedContact}">
+            <TextBlock Text="Контакт: " Margin="-266,10,169.835,0" RenderTransformOrigin="0.5,0.5"/>
+            <TextBlock Text="Имя: " HorizontalAlignment="Left" Width="50" Margin="-266,20,0,0" RenderTransformOrigin="0.5,0.5"/>
+            <TextBox Text="{Binding Name, UpdateSourceTrigger=PropertyChanged}" Margin="-266,0,134.835,0" RenderTransformOrigin="0.5,0.5"/>
+            <TextBlock Text="Фамилия: " Margin="-266,20,0,0" RenderTransformOrigin="0.5,0.5" HorizontalAlignment="Left" Width="116"/>
+            <TextBox Text="{Binding Surname, UpdateSourceTrigger=PropertyChanged}" Margin="-266,0,100.835,0" RenderTransformOrigin="0.5,0.5"/>
+            <TextBlock Text="Телефон: " Margin="-266,20,80.835,0" RenderTransformOrigin="0.5,0.5"/>
+            <TextBox Text="{Binding Phone, UpdateSourceTrigger=PropertyChanged}" Margin="-266,0,102.835,0" RenderTransformOrigin="0.5,0.5"/>
+        </StackPanel>
+    </Grid>
+</Window>

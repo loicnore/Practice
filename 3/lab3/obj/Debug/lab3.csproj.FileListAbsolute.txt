@@ -1,0 +1,15 @@
+D:\Учебная практика\3\lab3\bin\Debug\lab3.exe.config
+D:\Учебная практика\3\lab3\bin\Debug\lab3.exe
+D:\Учебная практика\3\lab3\bin\Debug\lab3.pdb
+D:\Учебная практика\3\lab3\obj\Debug\lab3.csproj.AssemblyReference.cache
+D:\Учебная практика\3\lab3\obj\Debug\MainWindow.g.cs
+D:\Учебная практика\3\lab3\obj\Debug\App.g.cs
+D:\Учебная практика\3\lab3\obj\Debug\lab3_MarkupCompile.cache
+D:\Учебная практика\3\lab3\obj\Debug\lab3_MarkupCompile.lref
+D:\Учебная практика\3\lab3\obj\Debug\MainWindow.baml
+D:\Учебная практика\3\lab3\obj\Debug\lab3.g.resources
+D:\Учебная практика\3\lab3\obj\Debug\lab3.Properties.Resources.resources
+D:\Учебная практика\3\lab3\obj\Debug\lab3.csproj.GenerateResource.cache
+D:\Учебная практика\3\lab3\obj\Debug\lab3.csproj.CoreCompileInputs.cache
+D:\Учебная практика\3\lab3\obj\Debug\lab3.exe
+D:\Учебная практика\3\lab3\obj\Debug\lab3.pdb
