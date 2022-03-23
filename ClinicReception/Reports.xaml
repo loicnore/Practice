@@ -1,0 +1,29 @@
+﻿<Page x:Class="ClinicReception.Reports"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:ClinicReception"
+      mc:Ignorable="d" 
+      d:DesignHeight="450" d:DesignWidth="800"
+      Title="Reports" >
+
+    <Grid Margin="0,6,-0.278,-6.052">
+        <TextBlock Text="Отчёты"  HorizontalAlignment="Center" FontSize="20" FontWeight="Bold" VerticalAlignment="Top" Margin="341,23,324,0"  />
+        <TextBlock Text="Тип отчёта:"  FontSize="14" FontWeight="Normal" Margin="207,109,503,0" VerticalAlignment="Top" Width="90"  />
+        <Button x:Name="SelBtn" Click="SelBtn_Click" Content="Выбрать" Margin="488,100,207,0" VerticalAlignment="Top" Height="28" Background="#FF395E5B" BorderBrush="#FF535353"/>
+        <ComboBox x:Name ="typeCombo_Box" Margin="339,100,341,0" Height="24" VerticalAlignment="Top" >
+            <ComboBoxItem Content="WorkScopeReports"></ComboBoxItem>
+            <ComboBoxItem Content="IncidenceReports"></ComboBoxItem>
+        </ComboBox>
+        
+
+        <DataGrid x:Name="data_Grid" ColumnWidth="Auto"  HorizontalAlignment="Center" Height="248" Margin="47,139,54,0" VerticalAlignment="Top" Width="699">
+
+        </DataGrid>
+        <Button x:Name="SaveBtn" Click="SaveBtn_Click" Content="Сохранить" Margin="618,404,54,18" Height="28" Background="#FF3A807A" BorderBrush="#FF535353"/>
+        <Button x:Name="DelBtn" Click="DelBtn_Click" Content="Удалить" Margin="458,404,214,18" Height="28" Background="#FFCC6A6D" BorderBrush="#FF535353"/>
+        <Button x:Name="AddBtn_Copy" Click="AddBtn_Click" Content="Добавить" Margin="300,404,372,18" Height="28" Background="#FF395E5B" BorderBrush="#FF535353"/>
+
+    </Grid>
+</Page>

@@ -1,0 +1,22 @@
+﻿<Window x:Class="ClinicReception.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:ClinicReception"
+        mc:Ignorable="d"
+        Title="Регистратура клиники" Height="650" Width="800">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="75"></RowDefinition>
+            <RowDefinition Height="*"></RowDefinition>
+            <RowDefinition Height="30"></RowDefinition>
+        </Grid.RowDefinitions>
+
+        <TextBlock Text="NOW〄 Clinic" FontWeight="Bold" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="24" FontFamily="Perpetua Titling MT" Foreground="White"></TextBlock>
+        <Grid Background="#FF3A807A" Panel.ZIndex="-2"></Grid>
+        <Grid Grid.Row="2" Background="#FF224E4A" Panel.ZIndex="-2"></Grid>
+        <Frame NavigationUIVisibility="Hidden" ContentRendered="MainFrame_ContentRendered" Name="MainFrame" Margin="0,75,0.043,0" Grid.RowSpan="2" Height="500" VerticalAlignment="Top"/>
+        <Button x:Name="btnBack" Content="Назад" HorizontalAlignment="Right" Margin="0,23,665.043,20.13" Click="btnBack_Click" Foreground="#DD000000" Background="White" BorderBrush="White" Width="102"></Button>
+    </Grid>
+</Window>

@@ -1,0 +1,339 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="ClinicReceptionModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="Accounts">
+    <Key>
+      <PropertyRef Name="Email" />
+    </Key>
+    <Property Name="Email" Type="String" MaxLength="30" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Password" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+    <Property Name="Role" Type="String" MaxLength="1" FixedLength="true" Unicode="false" />
+    <NavigationProperty Name="Roles" Relationship="Self.FK_Accounts_Roles" FromRole="Accounts" ToRole="Roles" />
+    <NavigationProperty Name="Staff" Relationship="Self.FK_Staff_Accounts" FromRole="Accounts" ToRole="Staff" />
+  </EntityType>
+  <EntityType Name="AppointmentRegistration">
+    <Key>
+      <PropertyRef Name="RecordID" />
+    </Key>
+    <Property Name="RecordID" Type="Int32" Nullable="false" />
+    <Property Name="PatientID" Type="Int32" />
+    <Property Name="Surname" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Patronymic" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Phone" Type="String" MaxLength="12" FixedLength="true" Unicode="false" />
+    <Property Name="MedCard" Type="Int32" />
+    <Property Name="Date" Type="DateTime" Precision="0" />
+    <Property Name="Time" Type="Time" Precision="7" />
+    <Property Name="Department" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+    <Property Name="DocSurname" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="DocName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="DocPatronymic" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="Patients" Relationship="Self.FK_AppointmentRegistration_Patients" FromRole="AppointmentRegistration" ToRole="Patients" />
+    <NavigationProperty Name="Schedule" Relationship="Self.FK_Schedule_AppointmentRegistration" FromRole="AppointmentRegistration" ToRole="Schedule" />
+  </EntityType>
+  <EntityType Name="Doctors">
+    <Key>
+      <PropertyRef Name="DocID" />
+    </Key>
+    <Property Name="DocID" Type="Int32" Nullable="false" />
+    <Property Name="Surname" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Patronymic" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Specialization" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+    <Property Name="Department" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+    <Property Name="Phone" Type="String" MaxLength="12" FixedLength="true" Unicode="false" />
+    <NavigationProperty Name="Schedule" Relationship="Self.FK_Schedule_Doctors" FromRole="Doctors" ToRole="Schedule" />
+    <NavigationProperty Name="WorkScopeReports" Relationship="Self.FK_WorkScopeReports_Doctors" FromRole="Doctors" ToRole="WorkScopeReports" />
+  </EntityType>
+  <EntityType Name="IncidenceReports">
+    <Key>
+      <PropertyRef Name="ReportID" />
+    </Key>
+    <Property Name="ReportID" Type="Int32" Nullable="false" />
+    <Property Name="EmployeeID" Type="Int32" />
+    <Property Name="Date" Type="DateTime" Precision="0" />
+    <Property Name="ReportType" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+    <Property Name="DiseaseType" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+    <Property Name="SickPeopleNum" Type="Int32" />
+    <NavigationProperty Name="Staff" Relationship="Self.FK_IncidenceReports_Staff" FromRole="IncidenceReports" ToRole="Staff" />
+  </EntityType>
+  <EntityType Name="PatientInfo">
+    <Key>
+      <PropertyRef Name="PatientID" />
+    </Key>
+    <Property Name="PatientID" Type="Int32" Nullable="false" />
+    <Property Name="Surname" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Patronymic" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="MedCard" Type="Int32" />
+    <Property Name="Phone" Type="String" MaxLength="12" FixedLength="true" Unicode="false" />
+    <Property Name="DocsObservations" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+    <Property Name="MedAppointments" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+    <Property Name="PrescribedTests" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="Patients" Relationship="Self.FK_Patients_PatientInfo" FromRole="PatientInfo" ToRole="Patients" />
+  </EntityType>
+  <EntityType Name="Patients">
+    <Key>
+      <PropertyRef Name="PatientID" />
+    </Key>
+    <Property Name="PatientID" Type="Int32" Nullable="false" />
+    <Property Name="Surname" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Patronymic" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="BirthDate" Type="DateTime" Precision="0" />
+    <Property Name="Phone" Type="String" MaxLength="12" FixedLength="true" Unicode="false" />
+    <Property Name="Address" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="MedCard" Type="Int32" />
+    <NavigationProperty Name="AppointmentRegistration" Relationship="Self.FK_AppointmentRegistration_Patients" FromRole="Patients" ToRole="AppointmentRegistration" />
+    <NavigationProperty Name="PatientInfo" Relationship="Self.FK_Patients_PatientInfo" FromRole="Patients" ToRole="PatientInfo" />
+  </EntityType>
+  <EntityType Name="Roles">
+    <Key>
+      <PropertyRef Name="Role" />
+    </Key>
+    <Property Name="Role" Type="String" MaxLength="1" FixedLength="true" Unicode="false" Nullable="false" />
+    <Property Name="Title" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="Accounts" Relationship="Self.FK_Accounts_Roles" FromRole="Roles" ToRole="Accounts" />
+  </EntityType>
+  <EntityType Name="Schedule">
+    <Key>
+      <PropertyRef Name="RecordId" />
+    </Key>
+    <Property Name="RecordId" Type="Int32" Nullable="false" />
+    <Property Name="Date" Type="DateTime" Precision="0" />
+    <Property Name="Time" Type="Time" Precision="7" />
+    <Property Name="PatientID" Type="Int32" />
+    <Property Name="PatientSurname" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="PatientName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="PatientPatronymic" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="MedCard" Type="Int32" />
+    <Property Name="Phone" Type="String" MaxLength="12" FixedLength="true" Unicode="false" />
+    <Property Name="DocID" Type="Int32" />
+    <Property Name="DocSurname" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="DocName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="DocPatronymic" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Department" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+    <Property Name="CabNumber" Type="Int32" />
+    <NavigationProperty Name="AppointmentRegistration" Relationship="Self.FK_Schedule_AppointmentRegistration" FromRole="Schedule" ToRole="AppointmentRegistration" />
+    <NavigationProperty Name="Doctors" Relationship="Self.FK_Schedule_Doctors" FromRole="Schedule" ToRole="Doctors" />
+  </EntityType>
+  <EntityType Name="Staff">
+    <Key>
+      <PropertyRef Name="EmployeeID" />
+    </Key>
+    <Property Name="EmployeeID" Type="Int32" Nullable="false" />
+    <Property Name="Surname" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Patronymic" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Position" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+    <Property Name="Phone" Type="String" MaxLength="12" FixedLength="true" Unicode="false" />
+    <Property Name="Address" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Email" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
+    <Property Name="Role" Type="String" MaxLength="1" FixedLength="true" Unicode="false" />
+    <NavigationProperty Name="Accounts" Relationship="Self.FK_Staff_Accounts" FromRole="Staff" ToRole="Accounts" />
+    <NavigationProperty Name="IncidenceReports" Relationship="Self.FK_IncidenceReports_Staff" FromRole="Staff" ToRole="IncidenceReports" />
+    <NavigationProperty Name="WorkScopeReports" Relationship="Self.FK_WorkScopeReports_Staff" FromRole="Staff" ToRole="WorkScopeReports" />
+  </EntityType>
+  <EntityType Name="sysdiagrams">
+    <Key>
+      <PropertyRef Name="diagram_id" />
+    </Key>
+    <Property Name="name" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="principal_id" Type="Int32" Nullable="false" />
+    <Property Name="diagram_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="version" Type="Int32" />
+    <Property Name="definition" Type="Binary" MaxLength="Max" FixedLength="false" />
+  </EntityType>
+  <EntityType Name="WorkScopeReports">
+    <Key>
+      <PropertyRef Name="ReportID" />
+    </Key>
+    <Property Name="ReportID" Type="Int32" Nullable="false" />
+    <Property Name="EmployeeID" Type="Int32" />
+    <Property Name="Date" Type="DateTime" Precision="0" />
+    <Property Name="ReportType" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+    <Property Name="DocID" Type="Int32" />
+    <Property Name="DocSurname" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="DocName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="DocPatronymic" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Department" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+    <Property Name="HoursWorked" Type="Int32" />
+    <Property Name="AppointmentsNum" Type="Int32" />
+    <NavigationProperty Name="Doctors" Relationship="Self.FK_WorkScopeReports_Doctors" FromRole="WorkScopeReports" ToRole="Doctors" />
+    <NavigationProperty Name="Staff" Relationship="Self.FK_WorkScopeReports_Staff" FromRole="WorkScopeReports" ToRole="Staff" />
+  </EntityType>
+  <Association Name="FK_Accounts_Roles">
+    <End Role="Roles" Type="Self.Roles" Multiplicity="0..1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="Accounts" Type="Self.Accounts" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Roles">
+        <PropertyRef Name="Role" />
+      </Principal>
+      <Dependent Role="Accounts">
+        <PropertyRef Name="Role" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Staff_Accounts">
+    <End Role="Accounts" Type="Self.Accounts" Multiplicity="0..1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="Staff" Type="Self.Staff" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Accounts">
+        <PropertyRef Name="Email" />
+      </Principal>
+      <Dependent Role="Staff">
+        <PropertyRef Name="Email" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_AppointmentRegistration_Patients">
+    <End Role="Patients" Type="Self.Patients" Multiplicity="0..1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="AppointmentRegistration" Type="Self.AppointmentRegistration" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Patients">
+        <PropertyRef Name="PatientID" />
+      </Principal>
+      <Dependent Role="AppointmentRegistration">
+        <PropertyRef Name="PatientID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Schedule_AppointmentRegistration">
+    <End Role="AppointmentRegistration" Type="Self.AppointmentRegistration" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="Schedule" Type="Self.Schedule" Multiplicity="0..1" />
+    <ReferentialConstraint>
+      <Principal Role="AppointmentRegistration">
+        <PropertyRef Name="RecordID" />
+      </Principal>
+      <Dependent Role="Schedule">
+        <PropertyRef Name="RecordId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Schedule_Doctors">
+    <End Role="Doctors" Type="Self.Doctors" Multiplicity="0..1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="Schedule" Type="Self.Schedule" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Doctors">
+        <PropertyRef Name="DocID" />
+      </Principal>
+      <Dependent Role="Schedule">
+        <PropertyRef Name="DocID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_WorkScopeReports_Doctors">
+    <End Role="Doctors" Type="Self.Doctors" Multiplicity="0..1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="WorkScopeReports" Type="Self.WorkScopeReports" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Doctors">
+        <PropertyRef Name="DocID" />
+      </Principal>
+      <Dependent Role="WorkScopeReports">
+        <PropertyRef Name="DocID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_IncidenceReports_Staff">
+    <End Role="Staff" Type="Self.Staff" Multiplicity="0..1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="IncidenceReports" Type="Self.IncidenceReports" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Staff">
+        <PropertyRef Name="EmployeeID" />
+      </Principal>
+      <Dependent Role="IncidenceReports">
+        <PropertyRef Name="EmployeeID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Patients_PatientInfo">
+    <End Role="PatientInfo" Type="Self.PatientInfo" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="Patients" Type="Self.Patients" Multiplicity="0..1" />
+    <ReferentialConstraint>
+      <Principal Role="PatientInfo">
+        <PropertyRef Name="PatientID" />
+      </Principal>
+      <Dependent Role="Patients">
+        <PropertyRef Name="PatientID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_WorkScopeReports_Staff">
+    <End Role="Staff" Type="Self.Staff" Multiplicity="0..1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="WorkScopeReports" Type="Self.WorkScopeReports" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Staff">
+        <PropertyRef Name="EmployeeID" />
+      </Principal>
+      <Dependent Role="WorkScopeReports">
+        <PropertyRef Name="EmployeeID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="ClinicReceptionEntities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="Accounts" EntityType="Self.Accounts" />
+    <EntitySet Name="AppointmentRegistration" EntityType="Self.AppointmentRegistration" />
+    <EntitySet Name="Doctors" EntityType="Self.Doctors" />
+    <EntitySet Name="IncidenceReports" EntityType="Self.IncidenceReports" />
+    <EntitySet Name="PatientInfo" EntityType="Self.PatientInfo" />
+    <EntitySet Name="Patients" EntityType="Self.Patients" />
+    <EntitySet Name="Roles" EntityType="Self.Roles" />
+    <EntitySet Name="Schedule" EntityType="Self.Schedule" />
+    <EntitySet Name="Staff" EntityType="Self.Staff" />
+    <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" />
+    <EntitySet Name="WorkScopeReports" EntityType="Self.WorkScopeReports" />
+    <AssociationSet Name="FK_Accounts_Roles" Association="Self.FK_Accounts_Roles">
+      <End Role="Roles" EntitySet="Roles" />
+      <End Role="Accounts" EntitySet="Accounts" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Staff_Accounts" Association="Self.FK_Staff_Accounts">
+      <End Role="Accounts" EntitySet="Accounts" />
+      <End Role="Staff" EntitySet="Staff" />
+    </AssociationSet>
+    <AssociationSet Name="FK_AppointmentRegistration_Patients" Association="Self.FK_AppointmentRegistration_Patients">
+      <End Role="Patients" EntitySet="Patients" />
+      <End Role="AppointmentRegistration" EntitySet="AppointmentRegistration" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Schedule_AppointmentRegistration" Association="Self.FK_Schedule_AppointmentRegistration">
+      <End Role="AppointmentRegistration" EntitySet="AppointmentRegistration" />
+      <End Role="Schedule" EntitySet="Schedule" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Schedule_Doctors" Association="Self.FK_Schedule_Doctors">
+      <End Role="Doctors" EntitySet="Doctors" />
+      <End Role="Schedule" EntitySet="Schedule" />
+    </AssociationSet>
+    <AssociationSet Name="FK_WorkScopeReports_Doctors" Association="Self.FK_WorkScopeReports_Doctors">
+      <End Role="Doctors" EntitySet="Doctors" />
+      <End Role="WorkScopeReports" EntitySet="WorkScopeReports" />
+    </AssociationSet>
+    <AssociationSet Name="FK_IncidenceReports_Staff" Association="Self.FK_IncidenceReports_Staff">
+      <End Role="Staff" EntitySet="Staff" />
+      <End Role="IncidenceReports" EntitySet="IncidenceReports" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Patients_PatientInfo" Association="Self.FK_Patients_PatientInfo">
+      <End Role="PatientInfo" EntitySet="PatientInfo" />
+      <End Role="Patients" EntitySet="Patients" />
+    </AssociationSet>
+    <AssociationSet Name="FK_WorkScopeReports_Staff" Association="Self.FK_WorkScopeReports_Staff">
+      <End Role="Staff" EntitySet="Staff" />
+      <End Role="WorkScopeReports" EntitySet="WorkScopeReports" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

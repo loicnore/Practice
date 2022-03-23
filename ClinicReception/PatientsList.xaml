@@ -1,0 +1,32 @@
+﻿<Page x:Class="ClinicReception.PatientsList"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:ClinicReception"
+      mc:Ignorable="d" 
+      d:DesignHeight="450" d:DesignWidth="800"
+      Title="PatientsList" IsVisibleChanged="Page_IsVisibleChanged">
+
+    <Grid Margin="0,6,-0.278,-6.052">
+        <TextBlock Text="Список пациентов"  HorizontalAlignment="Center" FontSize="20" FontWeight="Bold" VerticalAlignment="Top"/>
+        <TextBlock Text="Поиск🔎" HorizontalAlignment="Left" FontSize="20" FontWeight="Bold" VerticalAlignment="Top" Margin="47,78,0,0" Width="182"  />
+        <TextBox x:Name="poiskTxt" VerticalAlignment="Top" TextChanged="poiskTxt_TextChanged"  Style="{StaticResource MaterialDesignFloatingHintTextBox}" Height="55" Width="200"  FontSize="18" CaretBrush="#FF32896B" SelectionBrush="#FF32896B" Background="{x:Null}" BorderBrush="#FF32896B" RenderTransformOrigin="0.234,-0.043" Margin="155,50,445,0" />
+
+        <DataGrid x:Name="data_Grid" ColumnWidth="Auto"  HorizontalAlignment="Center" Height="270" Margin="47,117,54,0" VerticalAlignment="Top" Width="699">
+            <DataGrid.Columns>
+                <DataGridTemplateColumn Width="auto">
+                    <DataGridTemplateColumn.CellTemplate>
+                        <DataTemplate>
+                            <Button Content="Редактировать" Click="changeBtn_Click" Width="150" Name="changeBtn" ></Button>
+                        </DataTemplate>
+                    </DataGridTemplateColumn.CellTemplate>
+                </DataGridTemplateColumn>
+            </DataGrid.Columns>
+        </DataGrid>
+        <Button x:Name="SaveBtn" Click="SaveBtn_Click" Content="Сохранить" Margin="618,404,54,18" Height="28" Background="#FF3A807A" BorderBrush="#FF535353"/>
+        <Button x:Name="DelBtn" Click="DelBtn_Click" Content="Удалить" Margin="458,404,214,18" Height="28" Background="#FFCC6A6D" BorderBrush="#FF535353"/>
+        <Button x:Name="AddBtn_Copy" Click="AddBtn_Click" Content="Добавить" Margin="300,404,372,18" Height="28" Background="#FF395E5B" BorderBrush="#FF535353"/>
+
+    </Grid>
+</Page>

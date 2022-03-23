@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="205c6ba513504bd2ba66b279282bee51" Name="Diagram1" ZoomLevel="59">
+        <EntityTypeShape EntityType="ClinicReceptionModel.Accounts" Width="1.5" PointX="3" PointY="6.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="ClinicReceptionModel.AppointmentRegistration" Width="1.5" PointX="8.25" PointY="13.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="ClinicReceptionModel.Doctors" Width="1.5" PointX="8.25" PointY="2.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="ClinicReceptionModel.IncidenceReports" Width="1.5" PointX="7.5" PointY="6.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="ClinicReceptionModel.PatientInfo" Width="1.5" PointX="3.75" PointY="13.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="ClinicReceptionModel.Patients" Width="1.5" PointX="6" PointY="13.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="ClinicReceptionModel.Roles" Width="1.5" PointX="0.75" PointY="7.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="ClinicReceptionModel.Schedule" Width="1.5" PointX="10.5" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="ClinicReceptionModel.Staff" Width="1.5" PointX="5.25" PointY="6.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="ClinicReceptionModel.sysdiagrams" Width="1.5" PointX="0.75" PointY="10.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="ClinicReceptionModel.WorkScopeReports" Width="1.5" PointX="10.5" PointY="6.125" IsExpanded="true" />
+        <AssociationConnector Association="ClinicReceptionModel.FK_Accounts_Roles" ManuallyRouted="false" />
+        <AssociationConnector Association="ClinicReceptionModel.FK_Staff_Accounts" ManuallyRouted="false" />
+        <AssociationConnector Association="ClinicReceptionModel.FK_AppointmentRegistration_Patients" ManuallyRouted="false" />
+        <AssociationConnector Association="ClinicReceptionModel.FK_Schedule_AppointmentRegistration" ManuallyRouted="false" />
+        <AssociationConnector Association="ClinicReceptionModel.FK_Schedule_Doctors" ManuallyRouted="false" />
+        <AssociationConnector Association="ClinicReceptionModel.FK_WorkScopeReports_Doctors" ManuallyRouted="false" />
+        <AssociationConnector Association="ClinicReceptionModel.FK_IncidenceReports_Staff" ManuallyRouted="false" />
+        <AssociationConnector Association="ClinicReceptionModel.FK_Patients_PatientInfo" ManuallyRouted="false" />
+        <AssociationConnector Association="ClinicReceptionModel.FK_WorkScopeReports_Staff" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

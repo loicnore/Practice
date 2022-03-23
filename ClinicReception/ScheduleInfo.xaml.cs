@@ -1,0 +1,89 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Data;
+using System.Data.SqlClient;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+using System.Windows;
+using System.Windows.Controls;
+using System.Windows.Data;
+using System.Windows.Documents;
+using System.Windows.Input;
+using System.Windows.Media;
+using System.Windows.Media.Imaging;
+using System.Windows.Navigation;
+using System.Windows.Shapes;
+
+namespace ClinicReception
+{
+    /// <summary>
+    /// Логика взаимодействия для ScheduleInfo.xaml
+    /// </summary>
+    public partial class ScheduleInfo : Page
+    {
+        private Schedule _currentSched = new Schedule();
+        public ScheduleInfo()
+        {
+            InitializeComponent();
+            DataContext = _currentSched;
+        }
+        private void Page_IsVisibleChanged(object sender, DependencyPropertyChangedEventArgs e)
+        {
+            if (Visibility == Visibility.Visible)
+            {
+                ClinicReceptionEntities.GetContext().ChangeTracker.Entries().ToList().ForEach(p => p.Reload());
+                data_Grid.ItemsSource = ClinicReceptionEntities.GetContext().Schedule.ToList();
+            }
+        }
+
+        private void DelBtn_Click(object sender, RoutedEventArgs e)
+        {
+            var libForRemoving = data_Grid.SelectedItems.Cast<Schedule>().ToList();
+            if (MessageBox.Show($"Вы уверены, что хотите удалить следующее количество {libForRemoving.Count()} элементов?", "Внимание", MessageBoxButton.YesNo,
+                MessageBoxImage.Question) == MessageBoxResult.Yes)
+            {
+                try
+                {
+                    ClinicReceptionEntities.GetContext().Schedule.RemoveRange(libForRemoving);
+                    ClinicReceptionEntities.GetContext().SaveChanges();
+                    MessageBox.Show("Данные удалены!");
+                    data_Grid.ItemsSource = ClinicReceptionEntities.GetContext().Schedule.ToList();
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show(ex.Message.ToString());
+                }
+            }
+        }
+
+        private void SaveBtn_Click(object sender, RoutedEventArgs e)
+        {
+            try
+            {
+                /*ClinicReceptionEntities.GetContext().Schedule.Add(_currentSched);*/
+                ClinicReceptionEntities.GetContext().SaveChanges();
+                MessageBox.Show("Данные сохранены!");
+                data_Grid.ItemsSource = ClinicReceptionEntities.GetContext().Schedule.ToList();
+            }
+            catch (Exception exep)
+            {
+                MessageBox.Show(exep.Message.ToString());
+            }
+        }
+
+
+        private void poiskTxt_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            var _currentSched = ClinicReceptionEntities.GetContext().Schedule.ToList();
+            _currentSched = _currentSched.Where(p => p.PatientSurname.ToLower().Contains(poiskTxt.Text.ToLower())).ToList();
+            data_Grid.ItemsSource = _currentSched;
+        }
+
+        private void RecBtn_Click(object sender, RoutedEventArgs e)
+        {
+            Manager.MainFrame.Navigate(new RecordsList());
+        }
+    }
+  
+}

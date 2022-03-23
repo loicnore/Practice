@@ -1,0 +1,52 @@
+﻿<Page x:Class="ClinicReception.EmployeeRegistration"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:ClinicReception"
+      mc:Ignorable="d" d:DesignWidth="800"
+      Title="EmployeeRegistration" Height="592">
+
+    <Grid OpacityMask="Black" VerticalAlignment="Top" Height="470" Margin="0,0,-0.278,50">
+
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="190*"></ColumnDefinition>
+            <ColumnDefinition Width="271*"></ColumnDefinition>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*"></RowDefinition>
+            <RowDefinition Height="*"></RowDefinition>
+            <RowDefinition Height="*"></RowDefinition>
+            <RowDefinition Height="*"></RowDefinition>
+            <RowDefinition Height="*"></RowDefinition>
+            <RowDefinition Height="*"></RowDefinition>
+            <RowDefinition Height="*"></RowDefinition>
+            <RowDefinition Height="*"></RowDefinition>
+            <RowDefinition Height="*"></RowDefinition>
+            <RowDefinition Height="*"></RowDefinition>
+
+        </Grid.RowDefinitions>
+        <TextBlock Text="Введите данные сотрудника:" Grid.Row="0" VerticalAlignment="Center" FontSize="16" Margin="0.261,14,210.722,10.078" Foreground="#FF3A807A" Grid.Column="1"/>
+        <TextBlock Text="Фамилия" Grid.Row="1"  HorizontalAlignment="Right" VerticalAlignment="Center" FontSize="16" Margin="0,9.252,2.739,17.496"/>
+        <TextBlock Text="Имя" Grid.Row="2"  HorizontalAlignment="Right" VerticalAlignment="Center" FontSize="16" Margin="0,8.504,2.739,17.243" RenderTransformOrigin="0.301,0.234"/>
+        <TextBlock Text="Отчество" Grid.Row="3"  HorizontalAlignment="Right" VerticalAlignment="Center" FontSize="16" Margin="0,9.757,2.739,17.826"></TextBlock>
+        <TextBlock Text="Должность" Grid.Row="4"  HorizontalAlignment="Right" VerticalAlignment="Center" FontSize="16" Margin="0,9.757,2.739,17.826"></TextBlock>
+        <TextBlock Text="Телефон" Grid.Row="5"  HorizontalAlignment="Right" VerticalAlignment="Center" FontSize="16" Margin="0,9.757,2.739,17.826"></TextBlock>
+        <TextBlock Text="Адрес" Grid.Row="6"  HorizontalAlignment="Right" VerticalAlignment="Center" FontSize="16" Margin="0,9.757,2.739,17.826"></TextBlock>
+        <TextBlock Text="Email" Grid.Row="7"  HorizontalAlignment="Right" VerticalAlignment="Center" FontSize="16" Margin="0,8.261,2.739,17.487"/>
+        <TextBlock Text="Роль в системе" Grid.Row="8"  HorizontalAlignment="Right" VerticalAlignment="Center" FontSize="16" Margin="0,8.513,2.739,16.235"/>
+
+
+        <TextBox x:Name="surname" Text="{Binding Surname}" MaxLength="50" Grid.Row="1" Grid.Column="1" Height="30" Width="196" HorizontalAlignment="Left" VerticalAlignment="Center" FontSize="16" Margin="62.261,4.513,0,12.235" ></TextBox>
+        <TextBox x:Name="name" Text="{Binding Name}" MaxLength="50" Grid.Row="2" Grid.Column="1" Height="30" Width="196" HorizontalAlignment="Left" VerticalAlignment="Center" FontSize="16" Margin="62.261,4.513,0,12.235"></TextBox>
+        <TextBox x:Name="patronymic" Text="{Binding Patronymic}" MaxLength="50" Grid.Row="3" Grid.Column="1" Height="30" Width="196" HorizontalAlignment="Left" VerticalAlignment="Center" FontSize="16" Margin="62.261,4.513,0,12.235"/>
+        <TextBox x:Name="position" Text="{Binding Position}"  MaxLength="20" Grid.Row="4" Grid.Column="1" Height="30" Width="196" HorizontalAlignment="Left" VerticalAlignment="Center" FontSize="16" Margin="62.261,4.513,0,12.235"/>
+        <TextBox x:Name="phone" Text="{Binding Phone}" MaxLength="12" Grid.Row="5" Grid.Column="1" Height="30" Width="196" HorizontalAlignment="Left" VerticalAlignment="Center" FontSize="16" Margin="62.261,4.513,0,12.235"></TextBox>
+        <TextBox x:Name="address" Text="{Binding Address}" MaxLength="50" Grid.Row="6" Grid.Column="1" Height="30" Width="196" HorizontalAlignment="Left" VerticalAlignment="Center" FontSize="16" Margin="62.261,4.513,0,12.235"></TextBox>
+        <TextBox x:Name="email" Text="{Binding Email}"  MaxLength="30" Grid.Row="7" Grid.Column="1" Height="30" Width="196" HorizontalAlignment="Left" VerticalAlignment="Center" FontSize="16" Margin="62.261,4.513,0,12.235" BorderBrush="#89000000"/>
+        <TextBox x:Name="role" Text="{Binding Role}"  MaxLength="1" Grid.Row="8" Grid.Column="1" Height="30" Width="196" HorizontalAlignment="Left" VerticalAlignment="Center" FontSize="16" Margin="62.261,4.513,0,12.235"/>
+
+        <Button x:Name="SaveBtn" Click="SaveBtn_Click" Content="Сохранить" Margin="88.261,18.765,270.722,-0.017" Height="28" Grid.Row="9" Background="#FF3A807A" Grid.Column="1" BorderBrush="#FF535353"/>
+        <Button x:Name="ClearBtn" Click="ClearBtn_Click" Content="Очистить" Margin="271,18.765,415.722,-0.017" Height="28" Grid.Row="9" Background="#FFCC6A6D" BorderBrush="#FF535353" Grid.ColumnSpan="2"/>
+    </Grid>
+</Page>

@@ -1,0 +1,321 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="Хранилище ClinicReceptionModel" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="Accounts">
+    <Key>
+      <PropertyRef Name="Email" />
+    </Key>
+    <Property Name="Email" Type="nvarchar" MaxLength="30" Nullable="false" />
+    <Property Name="Password" Type="nvarchar" MaxLength="20" />
+    <Property Name="Role" Type="char" MaxLength="1" />
+  </EntityType>
+  <EntityType Name="AppointmentRegistration">
+    <Key>
+      <PropertyRef Name="RecordID" />
+    </Key>
+    <Property Name="RecordID" Type="int" Nullable="false" />
+    <Property Name="PatientID" Type="int" />
+    <Property Name="Surname" Type="nvarchar" MaxLength="50" />
+    <Property Name="Name" Type="nvarchar" MaxLength="50" />
+    <Property Name="Patronymic" Type="nvarchar" MaxLength="50" />
+    <Property Name="Phone" Type="char" MaxLength="12" />
+    <Property Name="MedCard" Type="int" />
+    <Property Name="Date" Type="date" />
+    <Property Name="Time" Type="time" Precision="7" />
+    <Property Name="Department" Type="nvarchar" MaxLength="20" />
+    <Property Name="DocSurname" Type="nvarchar" MaxLength="50" />
+    <Property Name="DocName" Type="nvarchar" MaxLength="50" />
+    <Property Name="DocPatronymic" Type="nvarchar" MaxLength="50" />
+  </EntityType>
+  <EntityType Name="Doctors">
+    <Key>
+      <PropertyRef Name="DocID" />
+    </Key>
+    <Property Name="DocID" Type="int" Nullable="false" />
+    <Property Name="Surname" Type="nvarchar" MaxLength="50" />
+    <Property Name="Name" Type="nvarchar" MaxLength="50" />
+    <Property Name="Patronymic" Type="nvarchar" MaxLength="50" />
+    <Property Name="Specialization" Type="nvarchar" MaxLength="20" />
+    <Property Name="Department" Type="nvarchar" MaxLength="20" />
+    <Property Name="Phone" Type="char" MaxLength="12" />
+  </EntityType>
+  <EntityType Name="IncidenceReports">
+    <Key>
+      <PropertyRef Name="ReportID" />
+    </Key>
+    <Property Name="ReportID" Type="int" Nullable="false" />
+    <Property Name="EmployeeID" Type="int" />
+    <Property Name="Date" Type="date" />
+    <Property Name="ReportType" Type="nvarchar" MaxLength="20" />
+    <Property Name="DiseaseType" Type="nvarchar" MaxLength="20" />
+    <Property Name="SickPeopleNum" Type="int" />
+  </EntityType>
+  <EntityType Name="PatientInfo">
+    <Key>
+      <PropertyRef Name="PatientID" />
+    </Key>
+    <Property Name="PatientID" Type="int" Nullable="false" />
+    <Property Name="Surname" Type="nvarchar" MaxLength="50" />
+    <Property Name="Name" Type="nvarchar" MaxLength="50" />
+    <Property Name="Patronymic" Type="nvarchar" MaxLength="50" />
+    <Property Name="MedCard" Type="int" />
+    <Property Name="Phone" Type="char" MaxLength="12" />
+    <Property Name="DocsObservations" Type="nvarchar" MaxLength="200" />
+    <Property Name="MedAppointments" Type="nvarchar" MaxLength="200" />
+    <Property Name="PrescribedTests" Type="nvarchar" MaxLength="200" />
+  </EntityType>
+  <EntityType Name="Patients">
+    <Key>
+      <PropertyRef Name="PatientID" />
+    </Key>
+    <Property Name="PatientID" Type="int" Nullable="false" />
+    <Property Name="Surname" Type="nvarchar" MaxLength="50" />
+    <Property Name="Name" Type="nvarchar" MaxLength="50" />
+    <Property Name="Patronymic" Type="nvarchar" MaxLength="50" />
+    <Property Name="BirthDate" Type="date" />
+    <Property Name="Phone" Type="char" MaxLength="12" />
+    <Property Name="Address" Type="nvarchar" MaxLength="50" />
+    <Property Name="MedCard" Type="int" />
+  </EntityType>
+  <EntityType Name="Roles">
+    <Key>
+      <PropertyRef Name="Role" />
+    </Key>
+    <Property Name="Role" Type="char" MaxLength="1" Nullable="false" />
+    <Property Name="Title" Type="nvarchar" MaxLength="20" />
+  </EntityType>
+  <EntityType Name="Schedule">
+    <Key>
+      <PropertyRef Name="RecordId" />
+    </Key>
+    <Property Name="RecordId" Type="int" Nullable="false" />
+    <Property Name="Date" Type="date" />
+    <Property Name="Time" Type="time" Precision="7" />
+    <Property Name="PatientID" Type="int" />
+    <Property Name="PatientSurname" Type="nvarchar" MaxLength="50" />
+    <Property Name="PatientName" Type="nvarchar" MaxLength="50" />
+    <Property Name="PatientPatronymic" Type="nvarchar" MaxLength="50" />
+    <Property Name="MedCard" Type="int" />
+    <Property Name="Phone" Type="char" MaxLength="12" />
+    <Property Name="DocID" Type="int" />
+    <Property Name="DocSurname" Type="nvarchar" MaxLength="50" />
+    <Property Name="DocName" Type="nvarchar" MaxLength="50" />
+    <Property Name="DocPatronymic" Type="nvarchar" MaxLength="50" />
+    <Property Name="Department" Type="nvarchar" MaxLength="20" />
+    <Property Name="CabNumber" Type="int" />
+  </EntityType>
+  <EntityType Name="Staff">
+    <Key>
+      <PropertyRef Name="EmployeeID" />
+    </Key>
+    <Property Name="EmployeeID" Type="int" Nullable="false" />
+    <Property Name="Surname" Type="nvarchar" MaxLength="50" />
+    <Property Name="Name" Type="nvarchar" MaxLength="50" />
+    <Property Name="Patronymic" Type="nvarchar" MaxLength="50" />
+    <Property Name="Position" Type="nvarchar" MaxLength="20" />
+    <Property Name="Phone" Type="char" MaxLength="12" />
+    <Property Name="Address" Type="nvarchar" MaxLength="50" />
+    <Property Name="Email" Type="nvarchar" MaxLength="30" />
+    <Property Name="Role" Type="char" MaxLength="1" />
+  </EntityType>
+  <EntityType Name="sysdiagrams">
+    <Key>
+      <PropertyRef Name="diagram_id" />
+    </Key>
+    <Property Name="name" Type="nvarchar" MaxLength="128" Nullable="false" />
+    <Property Name="principal_id" Type="int" Nullable="false" />
+    <Property Name="diagram_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="version" Type="int" />
+    <Property Name="definition" Type="varbinary(max)" />
+  </EntityType>
+  <EntityType Name="WorkScopeReports">
+    <Key>
+      <PropertyRef Name="ReportID" />
+    </Key>
+    <Property Name="ReportID" Type="int" Nullable="false" />
+    <Property Name="EmployeeID" Type="int" />
+    <Property Name="Date" Type="date" />
+    <Property Name="ReportType" Type="nvarchar" MaxLength="20" />
+    <Property Name="DocID" Type="int" />
+    <Property Name="DocSurname" Type="nvarchar" MaxLength="50" />
+    <Property Name="DocName" Type="nvarchar" MaxLength="50" />
+    <Property Name="DocPatronymic" Type="nvarchar" MaxLength="50" />
+    <Property Name="Department" Type="nvarchar" MaxLength="20" />
+    <Property Name="HoursWorked" Type="int" />
+    <Property Name="AppointmentsNum" Type="int" />
+  </EntityType>
+  <Association Name="FK_Accounts_Roles">
+    <End Role="Roles" Type="Self.Roles" Multiplicity="0..1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="Accounts" Type="Self.Accounts" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Roles">
+        <PropertyRef Name="Role" />
+      </Principal>
+      <Dependent Role="Accounts">
+        <PropertyRef Name="Role" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_AppointmentRegistration_Patients">
+    <End Role="Patients" Type="Self.Patients" Multiplicity="0..1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="AppointmentRegistration" Type="Self.AppointmentRegistration" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Patients">
+        <PropertyRef Name="PatientID" />
+      </Principal>
+      <Dependent Role="AppointmentRegistration">
+        <PropertyRef Name="PatientID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_IncidenceReports_Staff">
+    <End Role="Staff" Type="Self.Staff" Multiplicity="0..1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="IncidenceReports" Type="Self.IncidenceReports" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Staff">
+        <PropertyRef Name="EmployeeID" />
+      </Principal>
+      <Dependent Role="IncidenceReports">
+        <PropertyRef Name="EmployeeID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Patients_PatientInfo">
+    <End Role="PatientInfo" Type="Self.PatientInfo" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="Patients" Type="Self.Patients" Multiplicity="0..1" />
+    <ReferentialConstraint>
+      <Principal Role="PatientInfo">
+        <PropertyRef Name="PatientID" />
+      </Principal>
+      <Dependent Role="Patients">
+        <PropertyRef Name="PatientID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Schedule_AppointmentRegistration">
+    <End Role="AppointmentRegistration" Type="Self.AppointmentRegistration" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="Schedule" Type="Self.Schedule" Multiplicity="0..1" />
+    <ReferentialConstraint>
+      <Principal Role="AppointmentRegistration">
+        <PropertyRef Name="RecordID" />
+      </Principal>
+      <Dependent Role="Schedule">
+        <PropertyRef Name="RecordId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Schedule_Doctors">
+    <End Role="Doctors" Type="Self.Doctors" Multiplicity="0..1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="Schedule" Type="Self.Schedule" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Doctors">
+        <PropertyRef Name="DocID" />
+      </Principal>
+      <Dependent Role="Schedule">
+        <PropertyRef Name="DocID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Staff_Accounts">
+    <End Role="Accounts" Type="Self.Accounts" Multiplicity="0..1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="Staff" Type="Self.Staff" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Accounts">
+        <PropertyRef Name="Email" />
+      </Principal>
+      <Dependent Role="Staff">
+        <PropertyRef Name="Email" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_WorkScopeReports_Doctors">
+    <End Role="Doctors" Type="Self.Doctors" Multiplicity="0..1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="WorkScopeReports" Type="Self.WorkScopeReports" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Doctors">
+        <PropertyRef Name="DocID" />
+      </Principal>
+      <Dependent Role="WorkScopeReports">
+        <PropertyRef Name="DocID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_WorkScopeReports_Staff">
+    <End Role="Staff" Type="Self.Staff" Multiplicity="0..1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="WorkScopeReports" Type="Self.WorkScopeReports" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Staff">
+        <PropertyRef Name="EmployeeID" />
+      </Principal>
+      <Dependent Role="WorkScopeReports">
+        <PropertyRef Name="EmployeeID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="Хранилище ClinicReceptionModelContainer">
+    <EntitySet Name="Accounts" EntityType="Self.Accounts" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="AppointmentRegistration" EntityType="Self.AppointmentRegistration" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Doctors" EntityType="Self.Doctors" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="IncidenceReports" EntityType="Self.IncidenceReports" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="PatientInfo" EntityType="Self.PatientInfo" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Patients" EntityType="Self.Patients" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Roles" EntityType="Self.Roles" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Schedule" EntityType="Self.Schedule" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Staff" EntityType="Self.Staff" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="WorkScopeReports" EntityType="Self.WorkScopeReports" Schema="dbo" store:Type="Tables" />
+    <AssociationSet Name="FK_Accounts_Roles" Association="Self.FK_Accounts_Roles">
+      <End Role="Roles" EntitySet="Roles" />
+      <End Role="Accounts" EntitySet="Accounts" />
+    </AssociationSet>
+    <AssociationSet Name="FK_AppointmentRegistration_Patients" Association="Self.FK_AppointmentRegistration_Patients">
+      <End Role="Patients" EntitySet="Patients" />
+      <End Role="AppointmentRegistration" EntitySet="AppointmentRegistration" />
+    </AssociationSet>
+    <AssociationSet Name="FK_IncidenceReports_Staff" Association="Self.FK_IncidenceReports_Staff">
+      <End Role="Staff" EntitySet="Staff" />
+      <End Role="IncidenceReports" EntitySet="IncidenceReports" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Patients_PatientInfo" Association="Self.FK_Patients_PatientInfo">
+      <End Role="PatientInfo" EntitySet="PatientInfo" />
+      <End Role="Patients" EntitySet="Patients" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Schedule_AppointmentRegistration" Association="Self.FK_Schedule_AppointmentRegistration">
+      <End Role="AppointmentRegistration" EntitySet="AppointmentRegistration" />
+      <End Role="Schedule" EntitySet="Schedule" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Schedule_Doctors" Association="Self.FK_Schedule_Doctors">
+      <End Role="Doctors" EntitySet="Doctors" />
+      <End Role="Schedule" EntitySet="Schedule" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Staff_Accounts" Association="Self.FK_Staff_Accounts">
+      <End Role="Accounts" EntitySet="Accounts" />
+      <End Role="Staff" EntitySet="Staff" />
+    </AssociationSet>
+    <AssociationSet Name="FK_WorkScopeReports_Doctors" Association="Self.FK_WorkScopeReports_Doctors">
+      <End Role="Doctors" EntitySet="Doctors" />
+      <End Role="WorkScopeReports" EntitySet="WorkScopeReports" />
+    </AssociationSet>
+    <AssociationSet Name="FK_WorkScopeReports_Staff" Association="Self.FK_WorkScopeReports_Staff">
+      <End Role="Staff" EntitySet="Staff" />
+      <End Role="WorkScopeReports" EntitySet="WorkScopeReports" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

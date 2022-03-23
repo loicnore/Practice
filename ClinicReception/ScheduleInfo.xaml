@@ -1,0 +1,23 @@
+﻿<Page x:Class="ClinicReception.ScheduleInfo"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:ClinicReception"
+      mc:Ignorable="d" 
+      d:DesignHeight="450" d:DesignWidth="800"
+      Title="ScheduleInfo" IsVisibleChanged="Page_IsVisibleChanged">
+
+    <Grid>
+        <TextBlock Text="Расписание"  HorizontalAlignment="Center" FontSize="20" FontWeight="Bold" VerticalAlignment="Top" Margin="311,41,305.722,0"  />
+        <TextBlock Text="Поиск🔎" HorizontalAlignment="Left" FontSize="20" FontWeight="Bold" VerticalAlignment="Top" Margin="47,78,0,0" Width="182"  />
+        <TextBox x:Name="poiskTxt" VerticalAlignment="Top" TextChanged="poiskTxt_TextChanged"  Style="{StaticResource MaterialDesignFloatingHintTextBox}" Height="55" Width="200"  FontSize="18" CaretBrush="#FF32896B" SelectionBrush="#FF32896B" Background="{x:Null}" BorderBrush="#FF32896B" RenderTransformOrigin="0.234,-0.043" Margin="155,50,445,0" />
+        <DataGrid x:Name="data_Grid" ColumnWidth="Auto"  HorizontalAlignment="Center" Height="256" Margin="45,122,55.722,0" VerticalAlignment="Top" Width="699">
+
+        </DataGrid>
+        <Button x:Name="SaveBtn" Click="SaveBtn_Click" Content="Сохранить" Margin="629,400,59.722,21.948" Height="28" Background="#FF3A807A" BorderBrush="#FF535353"/>
+        <Button x:Name="DelBtn" Click="DelBtn_Click" Content="Удалить" Margin="437,400,248.722,21.948" Height="28" Background="#FFCC6A6D" BorderBrush="#FF535353"/>
+        <Button x:Name="RecBtn" Click="RecBtn_Click" Content="Записи" Margin="633,58,55.722,363.948" Height="28" Background="#FF72A6A2" BorderBrush="#FF535353"/>
+
+    </Grid>
+</Page>
